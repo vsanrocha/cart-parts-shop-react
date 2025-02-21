@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/home";
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 
 function App() {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

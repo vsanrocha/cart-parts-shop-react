@@ -1,10 +1,9 @@
-import { Button } from "@/components/ui/button";
+import ProductGrid from "./product/ProductGrid";
 
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
-      <Button variant="outline">Button</Button>
+      <ProductGrid />
     </div>
   );
 };
