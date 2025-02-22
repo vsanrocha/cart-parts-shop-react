@@ -1,4 +1,3 @@
-import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus, Trash2 } from "lucide-react";
@@ -7,6 +6,7 @@ import Zap from "@/assets/icons/zap.svg";
 import { Product } from "@/types/Product";
 import { currencyBrlFormat } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useCartStore } from "@/store/useCartStore";
 
 const ProductCardSkeleton = () => {
   return (
@@ -32,6 +32,7 @@ const ProductCardSkeleton = () => {
 };
 
 const ProductCard = ({
+  id,
   image,
   brand,
   name,
@@ -39,23 +40,38 @@ const ProductCard = ({
   price,
   hasExpressShipping,
   pixDiscount,
-  installments,
   pixPrice,
-}: Product) => {
-  const [quantity, setQuantity] = React.useState(1);
+  installments,
+  isLoading,
+}: Product & { isLoading?: boolean }) => {
+  const { addItem, increaseQuantity, decreaseQuantity, getItemQuantity } = useCartStore();
+  const quantity = getItemQuantity(id);
+  const hasItemOnCart = quantity > 0;
+  const hasOneItemOnCart = quantity === 1;
+  const hasMaxItemOnCart = quantity >= 99;
+
+  const handleAddToCart = () => {
+    addItem({
+      id,
+      image,
+      brand,
+      name,
+      code,
+      price,
+      hasExpressShipping,
+      pixDiscount,
+      pixPrice,
+      installments,
+    });
+  };
 
   const handleDecreaseQuantity = () => {
-    setQuantity((prev) => Math.max(1, prev - 1));
+    decreaseQuantity(id);
   };
 
   const handleIncreaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
+    increaseQuantity(id);
   };
-
-  const hasItemOnCard = true;
-  const hasOneItemOnCard = true;
-  const hasMaxItemOnCard = true;
-  const isLoading = false;
 
   if (isLoading) {
     return <ProductCardSkeleton />;
@@ -95,14 +111,14 @@ const ProductCard = ({
             </Badge>
           </div>
           <p className="text-sm text-gray-600">
-            Em até {installments.number}x{" "}
-            {currencyBrlFormat(installments.value)}
+            Em até {installments?.number}x
+            <span className="ml-2">{currencyBrlFormat(installments?.value)}</span>
           </p>
         </div>
       </div>
 
       <div className="mt-4 space-y-2">
-        {hasItemOnCard ? (
+        {hasItemOnCart ? (
           <div className="flex items-center gap-2 w-full rounded-[40px] py-1 px-3 bg-[#efeff0]">
             <Button
               variant="ghost"
@@ -110,7 +126,7 @@ const ProductCard = ({
               onClick={handleDecreaseQuantity}
               className="h-8 w-8"
             >
-              {hasOneItemOnCard ? (
+              {hasOneItemOnCart ? (
                 <Trash2 className="h-4 w-4" />
               ) : (
                 <Minus className="h-4 w-4" />
@@ -124,7 +140,7 @@ const ProductCard = ({
               size="icon"
               onClick={handleIncreaseQuantity}
               className="h-8 w-8"
-              disabled={hasMaxItemOnCard}
+              disabled={hasMaxItemOnCart}
             >
               <Plus className="h-4 w-4" />
             </Button>
@@ -133,6 +149,7 @@ const ProductCard = ({
           <Button
             className="w-full rounded-[40px] text-primary bg-[#e8f5fa]"
             variant="default"
+            onClick={handleAddToCart}
           >
             <CartShoppingAD className="mr-2 h-4 w-4" />
             Adicionar ao Carrinho
