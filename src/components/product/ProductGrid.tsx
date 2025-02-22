@@ -1,14 +1,7 @@
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+
 import { Separator } from "@/components/ui/separator";
 import ProductCard from "./ProductCard";
+import ProductPagination from "./ProductPagination"; 
 
 import { useProducts } from "@/hooks/useProducts";
 import { useSearchStore } from "@/store/useSearchStore";
@@ -65,36 +58,7 @@ const ProductGrid = () => {
       <Separator className="mt-8 mb-6" />
       {!!products.length && (
         <div className="hidden sm:block mb-16">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious
-                  aria-disabled={true}
-                  className={"pointer-events-none opacity-50"}
-                />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="/" isActive>
-                  1
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="/">2</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="/">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="/">90</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="/" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+          <ProductPagination />
         </div>
       )}
     </div>
