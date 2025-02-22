@@ -31,38 +31,22 @@ const ProductCardSkeleton = () => {
   );
 };
 
-const ProductCard = ({
-  id,
-  image,
-  brand,
-  name,
-  code,
-  price,
-  hasExpressShipping,
-  pixDiscount,
-  pixPrice,
-  installments,
-  isLoading,
-}: Product & { isLoading?: boolean }) => {
+const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: boolean } = {}) => {
   const { addItem, increaseQuantity, decreaseQuantity, getItemQuantity } = useCartStore();
+
+  if (isLoading || !product) {
+    return <ProductCardSkeleton />;
+  }
+
+  const { id, image, brand, name, code, price, hasExpressShipping, pixDiscount, pixPrice, installments } = product;
+
   const quantity = getItemQuantity(id);
   const hasItemOnCart = quantity > 0;
   const hasOneItemOnCart = quantity === 1;
   const hasMaxItemOnCart = quantity >= 99;
 
   const handleAddToCart = () => {
-    addItem({
-      id,
-      image,
-      brand,
-      name,
-      code,
-      price,
-      hasExpressShipping,
-      pixDiscount,
-      pixPrice,
-      installments,
-    });
+    addItem(product);
   };
 
   const handleDecreaseQuantity = () => {
@@ -72,10 +56,6 @@ const ProductCard = ({
   const handleIncreaseQuantity = () => {
     increaseQuantity(id);
   };
-
-  if (isLoading) {
-    return <ProductCardSkeleton />;
-  }
 
   return (
     <div className="flex-1 flex flex-col justify-between w-[271px]">

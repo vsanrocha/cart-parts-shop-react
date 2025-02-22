@@ -1,11 +1,29 @@
-import { forwardRef } from "react";
+import { forwardRef, useCallback } from "react";
 import { Input } from "./input";
 import { Search } from "lucide-react";
-
 import { cn } from "@/lib/utils";
+import { useSearchStore } from "@/store/useSearchStore";
+import debounce from "lodash/debounce";
 
-const InputSearch = forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className }) => {
+interface InputSearchProps extends React.ComponentProps<"input"> {
+  debounceMs?: number;
+}
+
+const InputSearch = forwardRef<HTMLInputElement, InputSearchProps>(
+  ({ className, debounceMs = 500, ...props }, ref) => {
+    const { setSearchTerm } = useSearchStore();
+
+    const debouncedSearch = useCallback(
+      debounce((value: string) => {
+        setSearchTerm(value.trim());
+      }, debounceMs),
+      [debounceMs, setSearchTerm]
+    );
+
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+      debouncedSearch(e.target.value);
+    };
+
     return (
       <div
         className={cn(
@@ -17,12 +35,17 @@ const InputSearch = forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
           <Search className="w-5 h-5" color="#D4D4D8" />
         </div>
         <Input
+          {...props}
+          ref={ref}
           placeholder="Busque por produto, termo ou código"
           className="text-[#D4D4D8] h-full bg-transparent outline-none border-none focus-visible:ring-offset-0 focus-visible:ring-0 placeholder:text-[#D4D4D8]"
+          onChange={handleSearch}
         />
       </div>
     );
   }
 );
+
+InputSearch.displayName = "InputSearch";
 
 export default InputSearch;
