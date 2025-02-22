@@ -20,7 +20,6 @@ const ProductGrid = () => {
             <span>Resultados para:</span>
             {searchTerm ? <b>{searchTerm}</b> : <b>Óleo do Motor</b>}
           </div>
-          <span className="text-sm hidden sm:block">Carregando...</span>
         </div>
         <Separator className="my-6" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">

@@ -1,14 +1,13 @@
 # 🚗 Loja de Autopeças Online
 
-Uma aplicação web moderna para venda de autopeças, desenvolvida com React e TypeScript.
+Uma aplicação web moderna para venda de autopeças para oficinas mecânicas, desenvolvida com React e TypeScript.
 
 ## 📋 Sobre o Projeto
 
-Este é um e-commerce especializado em autopeças, oferecendo uma interface intuitiva para busca e compra de peças automotivas. O projeto inclui funcionalidades como:
+Este é um e-commerce especializado em autopeças para oficinas mecânicas, oferecendo uma interface intuitiva para busca e compra de peças automotivas. O projeto inclui funcionalidades como:
 
 - 🔍 Busca de produtos em tempo real
 - 🛒 Carrinho de compras
-- 💳 Cálculo de descontos para pagamento via PIX
 - 🚚 Identificação de produtos com entrega expressa
 - 📱 Interface responsiva
 
@@ -26,7 +25,7 @@ Este é um e-commerce especializado em autopeças, oferecendo uma interface intu
 
 ## ⚙️ Pré-requisitos
 
-- Node.js (versão 16 ou superior)
+- Node.js (versão 20 ou superior)
 - yarn
 
 ## 🚀 Como Executar
@@ -73,5 +72,3 @@ Para gerar a build de produção:
 ```bash
 yarn build
 ```
-
-Os arquivos serão gerados no diretório `dist`.

@@ -27,7 +27,6 @@ const ProductPagination = ({
     const pages = [];
     const maxVisiblePages = 3;
 
-    // Always show first page
     pages.push(
       <PaginationItem key={1}>
         <PaginationLink
@@ -51,7 +50,6 @@ const ProductPagination = ({
       );
     }
 
-    // Show pages around current page
     for (
       let i = Math.max(2, currentPage - 1);
       i <= Math.min(currentPage + 1, totalPages - 1);
@@ -83,7 +81,6 @@ const ProductPagination = ({
       );
     }
 
-    // Always show last page
     if (totalPages > 1) {
       pages.push(
         <PaginationItem key={totalPages}>

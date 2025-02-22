@@ -41,7 +41,7 @@ export function HeaderCartDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="bg-brand-blue rounded-full text-brand-gray-200">
+        <Button className="bg-brand-blue rounded-full text-brand-gray-200 focus-visible:ring-offset-0 focus-visible:ring-0">
           <span className="flex items-center size-5 text-xl">
             <CartShoppingSolid />
           </span>{" "}
