@@ -1,50 +1,77 @@
-# React + TypeScript + Vite
+# 🚗 Loja de Autopeças Online
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação web moderna para venda de autopeças, desenvolvida com React e TypeScript.
 
-Currently, two official plugins are available:
+## 📋 Sobre o Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este é um e-commerce especializado em autopeças, oferecendo uma interface intuitiva para busca e compra de peças automotivas. O projeto inclui funcionalidades como:
 
-## Expanding the ESLint configuration
+- 🔍 Busca de produtos em tempo real
+- 🛒 Carrinho de compras
+- 💳 Cálculo de descontos para pagamento via PIX
+- 🚚 Identificação de produtos com entrega expressa
+- 📱 Interface responsiva
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Tecnologias Principais
 
-- Configure the top-level `parserOptions` property like this:
+- **React 19** - Biblioteca para construção de interfaces
+- **TypeScript** - Superset JavaScript com tipagem estática
+- **Vite** - Build tool e dev server
+- **TanStack Query** - Gerenciamento de estado e cache para dados do servidor
+- **Zustand** - Gerenciamento de estado global
+- **Tailwind CSS** - Framework CSS utilitário
+- **Vitest** - Framework de testes
+- **MSW (Mock Service Worker)** - Interceptação e mock de requisições para testes
+- **Testing Library** - Biblioteca para testes de componentes React
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## ⚙️ Pré-requisitos
+
+- Node.js (versão 16 ou superior)
+- yarn
+
+## 🚀 Como Executar
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/car-parts-shop-react.git
+cd car-parts-shop-react
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Configure as variáveis de ambiente:
+```bash
+cp .env.example .env
 ```
+Ajuste as variáveis no arquivo `.env` conforme necessário.
+
+3. Instale as dependências:
+```bash
+yarn
+```
+
+4. Execute o projeto em modo de desenvolvimento:
+```bash
+yarn dev
+```
+
+5. Acesse a aplicação em `http://localhost:5173`
+
+## 🧪 Executando os Testes
+
+Para executar os testes unitários:
+```bash
+yarn test
+```
+
+Para executar os testes em modo watch:
+```bash
+yarn test:watch
+```
+
+## 📦 Build para Produção
+
+Para gerar a build de produção:
+```bash
+yarn build
+```
+
+Os arquivos serão gerados no diretório `dist`.

@@ -1,9 +1,8 @@
 import {
-  NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenu,
 } from "@/components/ui/navigation-menu";
 
 const categories = [
@@ -33,7 +32,6 @@ const CategoryNav = () => {
             <NavigationMenuTrigger className="px-0">
               {category.name}
             </NavigationMenuTrigger>
-            <NavigationMenuContent></NavigationMenuContent>
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>

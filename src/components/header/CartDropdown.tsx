@@ -22,7 +22,7 @@ export function HeaderCartDropdown() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="bg-[#0860C4] rounded-full text-[#D4D4D8]">
+          <Button className="bg-brand-blue rounded-full text-brand-gray-200">
             <span className="flex items-center size-5 text-xl">
               <CartShoppingSolid />
             </span>
@@ -31,7 +31,7 @@ export function HeaderCartDropdown() {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-[304px]">
           <DropdownMenuLabel className="flex justify-center py-3 px-4">
-            <span className="text-[#27272A] font-semibold">Carrinho vazio</span>
+            <span className="text-brand-gray-500 font-semibold">Carrinho vazio</span>
           </DropdownMenuLabel>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -41,7 +41,7 @@ export function HeaderCartDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="bg-[#0860C4] rounded-full text-[#D4D4D8]">
+        <Button className="bg-brand-blue rounded-full text-brand-gray-200">
           <span className="flex items-center size-5 text-xl">
             <CartShoppingSolid />
           </span>{" "}
@@ -50,12 +50,12 @@ export function HeaderCartDropdown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-[304px]">
         <DropdownMenuLabel className="flex justify-between py-3 px-4">
-          <span className="text-[#27272A] font-semibold">Itens no Carrinho</span>{" "}
+          <span className="text-brand-gray-500 font-semibold">Itens no Carrinho</span>{" "}
           <span>{currencyBrlFormat(getTotalPrice())}</span>
         </DropdownMenuLabel>
         {items.map((item) => (
           <DropdownMenuItem key={item.id} className="flex justify-between px-4 py-2 gap-3">
-            <div className="w-16 h-16 rounded-md bg-[#F4F4F5] flex items-center justify-center">
+            <div className="w-16 h-16 rounded-md bg-brand-gray-50 flex items-center justify-center">
               <img
                 src={item.image}
                 alt={item.name}
@@ -66,7 +66,7 @@ export function HeaderCartDropdown() {
               <span className="text-sm font-semibold mb-2 leading-tight line-clamp-2">{item.name}</span>
               <div className="flex justify-between items-center mt-1">
                 <small className="text-xs">Qnt. {item.quantity}x</small>
-                <small className="text-xs text-[#27272A]">{currencyBrlFormat(item.pixPrice * item.quantity)}</small>
+                <small className="text-xs text-brand-gray-500">{currencyBrlFormat(item.pixPrice * item.quantity)}</small>
               </div>
             </div>
           </DropdownMenuItem>

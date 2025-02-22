@@ -1,6 +1,3 @@
-import { useProducts } from "@/hooks/useProducts";
-import ProductCard from "./ProductCard";
-import { useSearchStore } from "@/store/useSearchStore";
 import {
   Pagination,
   PaginationContent,
@@ -10,7 +7,11 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Separator } from "../ui/separator";
+import { Separator } from "@/components/ui/separator";
+import ProductCard from "./ProductCard";
+
+import { useProducts } from "@/hooks/useProducts";
+import { useSearchStore } from "@/store/useSearchStore";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -45,9 +46,9 @@ const ProductGrid = () => {
           <span>Resultados para:</span>
           {searchTerm ? <b>{searchTerm}</b> : <b>Óleo do Motor</b>}
         </div>
-        <span className="text-sm hidden sm:block">
+        {!!products.length && <span className="text-sm hidden sm:block">
           {products.length} de 9.999 resultados
-        </span>
+        </span>}
       </div>
       <Separator className="my-6" />
       {products.length === 0 ? (
@@ -62,38 +63,40 @@ const ProductGrid = () => {
         </div>
       )}
       <Separator className="mt-8 mb-6" />
-      <div className="hidden sm:block mb-16">
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious
-                aria-disabled={true}
-                className={"pointer-events-none opacity-50"}
-              />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#" isActive>
-                1
-              </PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">2</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">3</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationEllipsis />
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationLink href="#">90</PaginationLink>
-            </PaginationItem>
-            <PaginationItem>
-              <PaginationNext href="#" />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div>
+      {!!products.length && (
+        <div className="hidden sm:block mb-16">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  aria-disabled={true}
+                  className={"pointer-events-none opacity-50"}
+                />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="/" isActive>
+                  1
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="/">2</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="/">3</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="/">90</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationNext href="/" />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </div>
   );
 };

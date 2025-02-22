@@ -1,9 +1,5 @@
-import MecanizouLogo from "@/assets/images/mecanizou-logo.svg";
-import Store from "@/assets/icons/store.svg";
-import Sparkles from "@/assets/icons/sparkles.svg";
-import InputSearch from "../ui/input-search";
-import HeaderCartDropdown from "./CartDropdown";
-import { Button } from "../ui/button";
+import { ChevronDown, CircleHelp } from "lucide-react";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,8 +8,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { ChevronDown, CircleHelp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import InputSearch from "@/components/ui/input-search";
 import CategoryNav from "./CategoryNav";
+import HeaderCartDropdown from "./CartDropdown";
+
+import MecanizouLogo from "@/assets/images/mecanizou-logo.svg";
+import Sparkles from "@/assets/icons/sparkles.svg";
+import Store from "@/assets/icons/store.svg";
 
 const Header = () => {
   return (
@@ -24,15 +26,15 @@ const Header = () => {
             <div>
               <MecanizouLogo />
             </div>
-            <InputSearch className="hidden sm:flex" />
+            <InputSearch className="hidden sm:flex text-brand-gray-200" />
             <div className="flex">
               <HeaderCartDropdown />
-              <Button variant="default" className=" text-[#D4D4D8]">
+              <Button variant="default" className="text-brand-gray-200">
                 <Store /> <span className="hidden lg:block">Minha Oficina</span>{" "}
                 <ChevronDown />
               </Button>
             </div>
-            <div className="hidden lg:block text-[#D4D4D8]">
+            <div className="hidden lg:block text-brand-gray-200">
               <CircleHelp />
             </div>
           </div>
@@ -41,7 +43,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <div className="hidden md:flex items-center h-16 w-full text-[#52525B] bg-white border-b border-gray-200 drop-shadow">
+      <div className="hidden md:flex items-center h-16 w-full text-brand-gray-400 bg-white border-b border-gray-200 drop-shadow">
         <div className="container flex items-center justify-between">
           <CategoryNav />
           <Button variant="outline" className="hidden lg:flex rounded-3xl">

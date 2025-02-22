@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { Product } from '@/types/Product';
 import { SearchParams } from '@/types/common';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = import.meta.env.VITE_API_URL;
 
 interface UseProductsOptions extends SearchParams {
   enabled?: boolean;

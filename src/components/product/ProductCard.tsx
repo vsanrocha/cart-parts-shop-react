@@ -59,7 +59,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
 
   return (
     <div className="flex-1 flex flex-col justify-between w-[271px]">
-      <div className="relative flex items-center justify-center p-10 bg-[#F4F4F5] rounded-xl">
+      <div className="relative flex items-center justify-center p-10 bg-brand-gray-50 rounded-xl">
         <img
           src={image}
           alt={name}
@@ -67,7 +67,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
         />
         {hasExpressShipping && (
           <div className="absolute top-3 left-3">
-            <Badge className="py-1 bg-[#00B496] text-white rounded-3xl hover:bg-[#00B496]">
+            <Badge className="py-1 bg-brand-green text-white rounded-3xl hover:bg-brand-green">
               <Zap className="w-3 h-3 mr-2" />
               Express
             </Badge>
@@ -76,7 +76,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
       </div>
 
       <div className="pt-4">
-        <p className="text-sm uppercase text-[#0958B5] font-medium">{brand}</p>
+        <p className="text-sm uppercase text-brand-blue-link font-medium">{brand}</p>
         <div className="">
           <h3 className="font-semibold text-base">{name}</h3>
           <p className="text-xs text-gray-500">Cod.: {code}</p>
@@ -90,7 +90,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
               <small>{pixDiscount}% OFF NO PIX</small>
             </Badge>
           </div>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Em até {installments?.number}x
             <span className="ml-2">{currencyBrlFormat(installments?.value)}</span>
           </p>
@@ -99,7 +99,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
 
       <div className="mt-4 space-y-2">
         {hasItemOnCart ? (
-          <div className="flex items-center gap-2 w-full rounded-[40px] py-1 px-3 bg-[#efeff0]">
+          <div className="flex items-center gap-2 w-full rounded-full py-1 px-3 bg-brand-gray-100">
             <Button
               variant="ghost"
               size="icon"
@@ -113,7 +113,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
                 <Minus className="h-4 w-4" />
               )}
             </Button>
-            <div className="flex items-center justify-center w-full p-1 bg-white rounded-[40px]">
+            <div className="flex items-center justify-center w-full p-1 bg-white rounded-full">
               <span>{quantity}</span>
             </div>
             <Button
@@ -129,7 +129,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
           </div>
         ) : (
           <Button
-            className="w-full rounded-[40px] text-primary bg-[#e8f5fa]"
+            className="w-full rounded-full text-primary bg-brand-blue-light"
             variant="default"
             onClick={handleAddToCart}
           >
