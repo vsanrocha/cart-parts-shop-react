@@ -10,7 +10,7 @@ import { useCartStore } from "@/store/useCartStore";
 
 const ProductCardSkeleton = () => {
   return (
-    <div className="flex-1 flex flex-col justify-between w-[271px]">
+    <div className="flex-1 flex flex-col justify-between w-[271px]" data-testid="product-card-skeleton">
       <Skeleton className="w-full h-[271px] rounded-xl" />
       <div className="pt-4">
         <Skeleton className="h-3 w-20 mb-2" />
@@ -105,6 +105,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
               size="icon"
               onClick={handleDecreaseQuantity}
               className="h-8 w-8"
+              aria-label="Diminuir quantidade"
             >
               {hasOneItemOnCart ? (
                 <Trash2 className="h-4 w-4" />
@@ -121,6 +122,7 @@ const ProductCard = ({ product, isLoading }: { product?: Product; isLoading?: bo
               onClick={handleIncreaseQuantity}
               className="h-8 w-8"
               disabled={hasMaxItemOnCart}
+              aria-label="Aumentar quantidade"
             >
               <Plus className="h-4 w-4" />
             </Button>
