@@ -1,0 +1,18 @@
+.badge-price-tag::before {
+  z-index: -1;
+  content: "\25CF";
+  top: 3.1px;
+  left: -6px;
+  position: absolute;
+  display: inline-block;
+  height: 1.5em;
+  width: 1.5em;
+  transform: rotate(44deg);
+  color: white;
+  text-indent: 0.1em;
+  line-height: 1.6em;
+  background-color: #dff9e4;
+  border-radius: 0.33em 0.53em 0.33em 0.33em;
+  border-width: 1px;
+  border: 1px solid transparent;
+}

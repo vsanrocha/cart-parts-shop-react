@@ -6,6 +6,16 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',],
   theme: {
+    container: {
+      center: true,
+      screens: {
+        sm: '600px',
+        md: '728px',
+        lg: '984px',
+        xl: '1240px',
+        '2xl': '1180px',
+      },
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -41,6 +51,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "gray-base": "#52525B"
       },
       borderRadius: {
         lg: `var(--radius)`,

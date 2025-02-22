@@ -6,10 +6,9 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
-
 const categories = [
   {
-    name: "Todas Categorias"
+    name: "Todas Categorias",
   },
   {
     name: "Óleos e Lubrificantes",
@@ -27,24 +26,19 @@ const categories = [
 
 const CategoryNav = () => {
   return (
-    <div className="flex items-center h-16 w-full text-[#52525B] bg-white border-b border-gray-200 drop-shadow">
-      <div className="container mx-auto ">
-        <NavigationMenu>
-          <NavigationMenuList>
-            {categories.map((category) => (
-              <NavigationMenuItem key={category.name}>
-                <NavigationMenuTrigger>{category.name}</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-    </div>
+    <NavigationMenu>
+      <NavigationMenuList className="flex gap-6">
+        {categories.map((category) => (
+          <NavigationMenuItem key={category.name}>
+            <NavigationMenuTrigger className="px-0">
+              {category.name}
+            </NavigationMenuTrigger>
+            <NavigationMenuContent></NavigationMenuContent>
+          </NavigationMenuItem>
+        ))}
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
-
-
 
 export default CategoryNav;
