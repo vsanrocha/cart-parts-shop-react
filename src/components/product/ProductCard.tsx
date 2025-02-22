@@ -6,6 +6,7 @@ import CartShoppingAD from "@/assets/icons/cart-shopping-ad.svg";
 import Zap from "@/assets/icons/zap.svg";
 import { Product } from "@/types/Product";
 import { currencyBrlFormat } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const ProductCard = ({
   image,
@@ -31,84 +32,125 @@ const ProductCard = ({
   const hasItemOnCard = true;
   const hasOneItemOnCard = true;
   const hasMaxItemOnCard = true;
+  const isLoading = false;
 
   return (
-    <div className="flex-1 flex flex-col justify-between max-w-[271px]">
-      <div className="relative flex items-center justify-center p-10 bg-[#F4F4F5] rounded-xl">
-        <img
-          src={image}
-          alt={name}
-          className="max-h-[192px] max-w-[192px] w-full h-full"
-        />
-        {hasExpressShipping && (
-          <div className="absolute top-3 left-3">
-            <Badge className="py-1 bg-[#00B496] text-white rounded-3xl hover:bg-[#00B496]">
-              <Zap className="w-3 h-3 mr-2" />
-              Express
-            </Badge>
-          </div>
-        )}
-      </div>
+    <div className="flex-1 flex flex-col justify-between w-[271px]">
+      {isLoading ? (
+        <Skeleton className="w-full h-[271px] rounded-xl" />
+      ) : (
+        <div className="relative flex items-center justify-center p-10 bg-[#F4F4F5] rounded-xl">
+          <img
+            src={image}
+            alt={name}
+            className="max-h-[192px] max-w-[192px] w-full h-full"
+          />
+          {hasExpressShipping && (
+            <div className="absolute top-3 left-3">
+              <Badge className="py-1 bg-[#00B496] text-white rounded-3xl hover:bg-[#00B496]">
+                <Zap className="w-3 h-3 mr-2" />
+                Express
+              </Badge>
+            </div>
+          )}
+        </div>
+      )}
+
       <div className="pt-4">
-        <p className="text-sm uppercase text-[#0958B5] font-medium">{brand}</p>
+        {isLoading ? (
+          <Skeleton className="h-3 w-20 mb-2" />
+        ) : (
+          <p className="text-sm uppercase text-[#0958B5] font-medium">
+            {brand}
+          </p>
+        )}
         <div className="">
-          <h3 className="font-semibold text-base">{name}</h3>
-          <p className="text-xs text-gray-500">Cod.: {code}</p>
+          {isLoading ? (
+            <>
+            <Skeleton className="h-6 w-60 mb-1" />
+            <Skeleton className="h-6 w-56 mb-2" />
+            </>
+          ) : (
+            <h3 className="font-semibold text-base">{name}</h3>
+          )}
+          {isLoading ? (
+            <Skeleton className="h-3 w-32" />
+          ) : (
+            <p className="text-xs text-gray-500">Cod.: {code}</p>
+          )}
         </div>
 
         <div className="mt-4">
-          <p className="text-xs line-through">{currencyBrlFormat(price)}</p>
-          <div className="flex items-center justify-between gap-2">
-            <p className="text-2xl font-bold">{currencyBrlFormat(pixPrice)}</p>
-            <Badge variant="price">
-              <small>{pixDiscount}% OFF NO PIX</small>
-            </Badge>
-          </div>
-          <p className="text-sm text-gray-600">
-            Em até {installments.number}x{" "}
-            {currencyBrlFormat(installments.value)}
-          </p>
+          {isLoading ? (
+            <Skeleton className="h-3 w-20 mb-2" />
+          ) : (
+            <p className="text-xs line-through">{currencyBrlFormat(price)}</p>
+          )}
+          {isLoading ? (
+            <Skeleton className="h-5 w-40 mb-2" />
+          ) : (
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-2xl font-bold">
+                {currencyBrlFormat(pixPrice)}
+              </p>
+              <Badge variant="price">
+                <small>{pixDiscount}% OFF NO PIX</small>
+              </Badge>
+            </div>
+          )}
+          {isLoading ? (
+            <Skeleton className="h-3 w-20" />
+          ) : (
+            <p className="text-sm text-gray-600">
+              Em até {installments.number}x{" "}
+              {currencyBrlFormat(installments.value)}
+            </p>
+          )}
         </div>
       </div>
 
-      <div className="mt-4 space-y-2">
-        {hasItemOnCard ? (
-          <div className="flex items-center gap-2 w-full rounded-[40px] py-1 px-3 bg-[#efeff0]">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleDecreaseQuantity}
-              className="h-8 w-8"
-            >
-              {hasOneItemOnCard ? (
-                <Trash2 className="h-4 w-4" />
-              ) : (
-                <Minus className="h-4 w-4" />
-              )}
-            </Button>
-            <div className="flex items-center justify-center w-full p-1 bg-white rounded-[40px]">
-              <span>{quantity}</span>
+      {isLoading ? (
+        <Skeleton className="h-10 w-full mt-4" />
+      ) : (
+        <div className="mt-4 space-y-2">
+          {hasItemOnCard ? (
+            <div className="flex items-center gap-2 w-full rounded-[40px] py-1 px-3 bg-[#efeff0]">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleDecreaseQuantity}
+                className="h-8 w-8"
+              >
+                {hasOneItemOnCard ? (
+                  <Trash2 className="h-4 w-4" />
+                ) : (
+                  <Minus className="h-4 w-4" />
+                )}
+              </Button>
+              <div className="flex items-center justify-center w-full p-1 bg-white rounded-[40px]">
+                <span>{quantity}</span>
+              </div>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleIncreaseQuantity}
+                className="h-8 w-8"
+                disabled={hasMaxItemOnCard}
+              >
+                <Plus className="h-4 w-4" />
+              </Button>
             </div>
+          ) : (
             <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleIncreaseQuantity}
-              className="h-8 w-8"
-              disabled={hasMaxItemOnCard}
+              className="w-full rounded-[40px] text-primary bg-[#e8f5fa]"
+              variant="default"
             >
-              <Plus className="h-4 w-4" />
+              <CartShoppingAD className="mr-2 h-4 w-4" />
+              Adicionar ao Carrinho
             </Button>
-          </div>
-        ) : (
-          <Button
-            className="w-full rounded-[40px] text-primary bg-[#e8f5fa]"
-            variant="default"
-          >
-            <CartShoppingAD className="mr-2 h-4 w-4" />
-            Adicionar ao Carrinho
-          </Button>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

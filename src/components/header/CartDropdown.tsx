@@ -9,7 +9,6 @@ import CartShoppingSolid from "@/assets/icons/cart-shopping-solid.svg";
 import CartShopping from "@/assets/icons/cart-shopping.svg";
 import {
   DropdownMenuItem,
-  DropdownMenuSeparator,
 } from "@radix-ui/react-dropdown-menu";
 import { Product } from "@/types/Product";
 import { Separator } from "../ui/separator";
