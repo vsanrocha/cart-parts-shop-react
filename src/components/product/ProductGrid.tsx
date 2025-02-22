@@ -146,14 +146,14 @@ const products: Product[] = [
 
 const ProductGrid = () => {
   return (
-    <div className="w-full">
+    <div className="w-full mt-6 sm:mt-0">
       <div className="container">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center text-2xl gap-2">
+        <div className="flex justify-between items-center px-4 sm:px-0">
+          <div className="flex items-center sm:text-2xl gap-2">
             <span>Resultados para:</span>
             <b>Óleo do Motor</b>
           </div>
-          <span className="text-sm">12 de 9.999 resultados</span>
+          <span className="text-sm hidden sm:block">12 de 9.999 resultados</span>
         </div>
         <Separator className="my-6" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
@@ -162,7 +162,7 @@ const ProductGrid = () => {
           ))}
         </div>
         <Separator className="mt-8 mb-6" />
-        <div>
+        <div className="hidden sm:block">
           <Pagination>
             <PaginationContent>
               <PaginationItem>
