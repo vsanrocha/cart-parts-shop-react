@@ -58,7 +58,11 @@ const ProductGrid = () => {
       <Separator className="mt-8 mb-6" />
       {!!products.length && (
         <div className="hidden sm:block mb-16">
-          <ProductPagination />
+          <ProductPagination
+            currentPage={1}
+            totalPages={1}
+            onPageChange={() => {}}
+          />
         </div>
       )}
     </div>
